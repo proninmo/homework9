@@ -19,5 +19,5 @@
 - name: Copy artefact from build server to control server
   synchronize:
     mode: pull
-    src: $war_folder/target/*.war
+    src: $war_folder/box/target/*.war
     dest: $war_folder
