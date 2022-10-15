@@ -1,2 +1,3 @@
 ---
 # defaults file for build
+war_folder: /tmp

@@ -5,3 +5,20 @@
   with_items: 
     - maven
     - git
+
+- name: Get source code of artefact
+  git:
+    repo: https://github.com/boxfuse/boxfuse-sample-java-war-hello.git
+    dest: $war_folder/box
+
+- name: Building artefact
+  shell: mvn clean install
+    become: yes
+    args:
+      chdir: $war_folder/box
+
+- name: Copy artefact from build server to control server
+  synchronize:
+    mode: pull
+    src: $war_folder/box/target/*.war
+    dest: /tmp
