@@ -1,2 +1,5 @@
 ---
 # tasks file for common
+- name: update system
+  apt:
+    update_cache: yes
