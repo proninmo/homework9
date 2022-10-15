@@ -1,10 +1,10 @@
 ---
 # tasks file for prod
 - name: Install tomcat & java
-  apt: name={{ item }} state=present
-  with_items:
-    - tomcat9
-    - default-jdk
+  apt:
+    pkg:
+      - tomcat9
+      - default-jdk
 
 - name: Ensure tomcat is started
   service:  
@@ -13,5 +13,5 @@
 
 - name: Copy artefact to tomcat
   synchronize:
-    src: /tmp/*.war
+    src: /tmp/hello-1.0.war
     dest: /var/lib/tomcat*/webapps/
