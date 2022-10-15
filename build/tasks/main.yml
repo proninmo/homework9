@@ -20,4 +20,4 @@
   synchronize:
     mode: pull
     src: $war_folder/target/*.war
-    dest: /tmp
+    dest: $war_folder
