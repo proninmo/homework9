@@ -13,5 +13,5 @@
 
 - name: Copy artefact to tomcat
   synchronize:
-    src: $war_folder/*.war
+    src: /tmp/*.war
     dest: /var/lib/tomcat*/webapps/

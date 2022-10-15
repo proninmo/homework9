@@ -1,23 +1,30 @@
 ---
 # tasks file for build
-- name: Install Build Packages
-  apt: name={{ item }} state=present
-  with_items: 
-    - maven
-    - git
+#- name: Install Build Packages
+#  apt: name={{ item }} state=present
+#  with_items: 
+#    - maven
+#    - git
+
+- name: Install maven & git packages
+  apt:
+    pkg:
+      - maven
+      - git
+    state: present
 
 - name: Get source code of artefact
   git:
     repo: https://github.com/boxfuse/boxfuse-sample-java-war-hello.git
-    dest: $war_folder/box
+    dest: /tmp/box
 
 - name: Building artefact
   shell: mvn clean install
   args:
-    chdir: $war_folder/box
+    chdir: /tmp/box
 
 - name: Copy artefact from build server to control server
   synchronize:
     mode: pull
-    src: $war_folder/box/target/*.war
-    dest: $war_folder
+    src: /tmp/box/target/*.war
+    dest: /tmp
