@@ -4,8 +4,7 @@
 - name: Install maven & git packages
   apt:
     pkg:
-      - maven
-      - git
+      - {{ packages }}
     state: present
 
 - name: Get source code of artefact
