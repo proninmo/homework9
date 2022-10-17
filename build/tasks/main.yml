@@ -16,7 +16,7 @@
 - name: Building artefact
   shell: mvn clean install
   args:
-    chdir: {{ build_folder }}
+    chdir: "{{ build_folder }}"
 
 - name: Copy artefact from build server to control server
   synchronize:
