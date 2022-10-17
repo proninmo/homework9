@@ -4,18 +4,19 @@
 - name: Install maven & git packages
   apt:
     pkg:
-      - "{{ packages }}"
+      - git
+      - maven
     state: present
 
 - name: Get source code of artefact
   git:
     repo: https://github.com/boxfuse/boxfuse-sample-java-war-hello.git
-    dest: /tmp/box
+    dest: {{ build_folder }}
 
 - name: Building artefact
   shell: mvn clean install
   args:
-    chdir: /tmp/box
+    chdir: {{ build_folder }}
 
 - name: Copy artefact from build server to control server
   synchronize:
