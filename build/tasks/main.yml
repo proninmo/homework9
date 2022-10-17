@@ -11,7 +11,7 @@
 - name: Get source code of artefact
   git:
     repo: https://github.com/boxfuse/boxfuse-sample-java-war-hello.git
-    dest: {{ build_folder }}
+    dest: "{{ build_folder }}"
 
 - name: Building artefact
   shell: mvn clean install
